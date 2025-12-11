@@ -77,3 +77,131 @@ footer {
 ul {
     padding-left: 20px;
 }
+<<<<<<< HEAD
+=======
+
+/* ログイン新規登録関連 */
+/* 外枠のレイアウト（画面中央寄せなど） */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* ヘッダーフッターを除いた高さに合わせて調整 */
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* カードのデザイン */
+.auth-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 400px; /* 幅を制限 */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* フォーム要素 */
+.form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    width: 70%;
+}
+
+.form-control {
+    width: 70%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* paddingを含めた幅計算にする */
+}
+
+.form-control:focus {
+    border-color: #3490dc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.2);
+}
+
+/* エラー表示 */
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.is-invalid {
+    border-color: #e3342f;
+}
+
+.error-text {
+    color: #e3342f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* ボタン */
+.form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    width: 30%;
+}
+
+.btn-primary {
+    background-color: #34424d;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #2779bd;
+}
+
+/* リンク */
+.auth-links {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.auth-links a {
+    color: #3490dc;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+>>>>>>> origin/rinon

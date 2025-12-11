@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 @extends('layouts.layout')
+=======
+@extends('layouts.app')
+
+@section('title', 'トップページ')
+>>>>>>> origin/rinon
 
 @section('content')
     <h2>トップページ</h2>
@@ -12,4 +18,8 @@
             <li>3位: 銀河鉄道の夜</li>
         </ul>
     </div>
+<<<<<<< HEAD
 @endsection
+=======
+@endsection
+>>>>>>> origin/rinon

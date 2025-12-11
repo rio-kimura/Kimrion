@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,3 +30,11 @@ class Book extends Model
         return $this->belongsTo(Author::class);
     }
 }
+=======
+use Illuminate\Database\Eloquent\Model;
+
+class Book extends Model
+{
+    //
+}
+>>>>>>> origin/rinon
