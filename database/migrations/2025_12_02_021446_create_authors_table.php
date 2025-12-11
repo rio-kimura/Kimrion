@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('authors', function (Blueprint $table) {
             $table->id();
+            //著者名 name: VARCHAR, Index, Not NUll
+            $table->string('name')->index();
+            //かな kana: VARCHAR, Index, Nullable
+            $table->string('kana')->nullable()->index();
+            //著者紹介 biography: TEXT, Nullable
+            $table->text('biography')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('authors');
     }
 };

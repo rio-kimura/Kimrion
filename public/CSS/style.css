@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+/* 全体のリセットと基本設定 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* フッターを下に押し下げるため */
+}
+
+/* ヘッダー */
+header {
+    background-color: #333; /* 黒っぽい背景 */
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between; /* タイトルとナビを左右に配置 */
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* メインコンテンツ */
+main {
+    flex: 1; /* 余白があれば広がる */
+    max-width: 960px; /* 横幅を制限して読みやすく */
+    width: 100%;
+    margin: 0 auto; /* 中央寄せ */
+    padding: 40px 20px;
+    background-color: #fff; /* 白背景 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.05); /* うっすら影 */
+}
+
+/* フッター */
+footer {
+    background-color: #eee;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* 共通：ランキング等のカードデザイン */
+.card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px; /* 角丸 */
+}
+
+.card h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+/* ログイン新規登録関連 */
+/* 外枠のレイアウト（画面中央寄せなど） */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* ヘッダーフッターを除いた高さに合わせて調整 */
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* カードのデザイン */
+.auth-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 400px; /* 幅を制限 */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* フォーム要素 */
+.form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+    width: 70%;
+}
+
+.form-control {
+    width: 70%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* paddingを含めた幅計算にする */
+}
+
+.form-control:focus {
+    border-color: #3490dc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.2);
+}
+
+/* エラー表示 */
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.is-invalid {
+    border-color: #e3342f;
+}
+
+.error-text {
+    color: #e3342f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* ボタン */
+.form-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    width: 30%;
+}
+
+.btn-primary {
+    background-color: #34424d;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #2779bd;
+}
+
+/* リンク */
+.auth-links {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.auth-links a {
+    color: #3490dc;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}

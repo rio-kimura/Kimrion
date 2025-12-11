@@ -17,8 +17,14 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            //権限設定
+            $table->tinyInteger('role')
+                    ->default(0)
+                    ->comment('権限 (0:一般、1:管理者)');
             $table->rememberToken();
             $table->timestamps();
+            //論理削除管理用
+            $table->softDeletes()->comment('削除日時 (論理削除用)');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

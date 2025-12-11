@@ -1,21 +1,23 @@
 @extends('layouts.app')
-@section('title', 'ログインページ')
+@section('title', '新規登録')
 
 @section('content')
-    <h2>ログイン</h2>
-    
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <h2>新規登録</h2>
 
-    <form method="POST" action="{{ route('login') }}" class="auth-form">
+    <form method="POST" action="{{ route('register.exec') }}" class="auth-form">
         @csrf
+
+        <div class="form-group">
+            <label for="name">なまえ</label>
+            <input 
+                type="name" 
+                name="name" 
+                id="name" 
+                class="form-control" 
+                required
+                autofocus
+            >
+        </div>
 
         <div class="form-group">
             <label for="email">メールアドレス</label>
@@ -34,7 +36,7 @@
         </div>
 
         <div class="form-group">
-            <label for="password">パスワード</label>
+            <label for="password">パスワード(2回入力)</label>
             <input 
                 type="password" 
                 name="password" 
@@ -44,14 +46,24 @@
             >
         </div>
 
+        <div class="form-group">
+            <input 
+                type="password" 
+                name="password_confirmation" 
+                id="password_conf" 
+                class="form-control" 
+                required
+            >
+        </div>
+
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">
-                ログイン
+                確認へ
             </button>
         </div>
 
         <div class="auth-links">
-            <a href="{{ route('register') }}">アカウントをお持ちでない方はこちら</a>
+            <a href="{{ route('login') }}">ログインはこちら</a>
         </div>
     </form>
 @endsection

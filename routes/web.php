@@ -35,8 +35,9 @@ Route::controller(AuthController::class)->group(function () {
     Route::middleware('guest')->group(function () {
         Route::get('/login', 'showLoginForm')->name('login');     // ログイン画面
         Route::post('/login', 'login');                           // ログイン処理
-        Route::get('/register', 'showRegisterForm')->name('register'); // 登録画面
-        Route::post('/register', 'register');                     // 登録処理
+        Route::get('/register', 'showRegisterForm')->name('register'); // 登録フォーム
+        Route::post('/register/confirm', 'confirmRegister')->name('register.confirm');
+        Route::post('/register', 'register')->name('register.exec'); // 登録処理
     });
 
     // ログイン中のユーザーのみアクセス可能
