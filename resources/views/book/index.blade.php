@@ -1,11 +1,11 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 <div style="max-width: 800px; margin: 0 auto;">
     <h2>書籍検索</h2>
 
     <div style="margin-bottom: 30px; text-align: center;">
-        <form action="{{ route('book.index') }}" method="GET">
+        <form action="{{ route('books.index') }}" method="GET">
             <input type="text" name="keyword" value="{{ $keyword }}" placeholder="書籍名・著者名で検索" style="padding: 10px; width: 60%; font-size: 16px;">
             <button type="submit" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">検索</button>
         </form>
@@ -19,26 +19,26 @@
             </tr>
         </thead>
         <tbody>
-            @if(count($books) > 0)
-                @foreach($books as $book)
-                <tr style="border-bottom: 1px solid #ddd;">
-                    <td style="padding: 15px;">
-                        <a href="{{ route('book.read', $book['id']) }}" style="text-decoration: none; color: #007BFF; font-weight: bold; display: block;">
-                            {{ $book['title'] }}
+            @forelse($books as $book)
+                <tr>
+                    <td>
+                        {{-- タイトル --}}
+                        <a href="{{ route('books.read', $book->id) }}" style="text-decoration: none; color: #007BFF; font-weight: bold;">
+                            {{ $book->title }}
                         </a>
                     </td>
-                    <td style="padding: 15px;">
-                        {{ $book['author'] }}
+                    <td>
+                        {{-- 【重要】ここを修正 --}}
+                        {{-- 誤: $book->author --}}
+                        {{-- 正: $book->author->name --}}
+                        {{ $book->author->name ?? '不明' }}
                     </td>
                 </tr>
-                @endforeach
-            @else
+            @empty
                 <tr>
-                    <td colspan="2" style="padding: 20px; text-align: center; color: #999;">
-                        該当する書籍が見つかりませんでした。
-                    </td>
+                    <td colspan="2" style="text-align: center;">該当する書籍は見つかりませんでした。</td>
                 </tr>
-            @endif
+            @endforelse
         </tbody>
     </table>
 </div>

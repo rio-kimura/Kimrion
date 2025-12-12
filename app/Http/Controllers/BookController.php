@@ -2,45 +2,55 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book; // Bookモデルを使用
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    // 検索画面（一覧画面）
+    /**
+     * 書籍一覧・検索画面
+     */
     public function index(Request $request)
     {
-        // 1. ダミーデータ（本来はデータベースから取るもの）
-        // 五十音順（あ→ん）を意識して作成
-        $books = [
-            ['id' => 1, 'title' => '愛と幻想のファシズム', 'author' => '村上 龍'],
-            ['id' => 2, 'title' => '伊豆の踊子', 'author' => '川端 康成'],
-            ['id' => 3, 'title' => '海辺のカフカ', 'author' => '村上 春樹'],
-            ['id' => 4, 'title' => '江戸川乱歩傑作選', 'author' => '江戸川 乱歩'],
-            ['id' => 5, 'title' => 'おくのほそ道', 'author' => '松尾 芭蕉'],
-            ['id' => 6, 'title' => '風の又三郎', 'author' => '宮沢 賢治'],
-            ['id' => 7, 'title' => '銀河鉄道の夜', 'author' => '宮沢 賢治'],
-            ['id' => 8, 'title' => '蜘蛛の糸', 'author' => '芥川 龍之介'],
-            ['id' => 9, 'title' => 'こころ', 'author' => '夏目 漱石'],
-            ['id' => 10, 'title' => '人間失格', 'author' => '太宰 治'],
-        ];
+        // 検索キーワードを取得
+        $keyword = $request->input('keyword');
 
-        // 2. 検索機能（ダミーデータに対する簡易検索）
-        $keyword = $request->input('keyword'); // 検索フォームからの入力値
+        // クエリビルダを使ってデータベースから検索
+        $query = Book::with('author')->where('status', 2); // 公開中の本のみ
 
+        // キーワードがある場合、タイトルまたは著者名で絞り込み
         if (!empty($keyword)) {
-            // タイトルか著者名にキーワードが含まれるものだけを残す
-            $books = array_filter($books, function($book) use ($keyword) {
-                return str_contains($book['title'], $keyword) || str_contains($book['author'], $keyword);
+            $query->where(function ($q) use ($keyword) {
+                $q->where('title', 'like', "%{$keyword}%")
+                  ->orWhereHas('author', function ($q) use ($keyword) {
+                      $q->where('name', 'like', "%{$keyword}%");
+                  });
             });
         }
+
+        // ページネーション付きで取得（1ページ10件）
+        $books = $query->paginate(10);
 
         return view('book.index', compact('books', 'keyword'));
     }
 
-    // 閲覧ページ（仮）
+    /**
+     * 書籍詳細ページ（閲覧ページ）
+     */
     public function read($id)
     {
-        // とりあえずIDだけ渡して表示
-        return view('book.read', ['id' => $id]);
+        // IDに合致する本を取得（なければ404エラー）
+        $book = Book::where('status', 2)->findOrFail($id);
+
+        // ビューに本データを渡す
+        // 'book.read' ビューを作成する必要があります
+        return view('book.read', compact('book'));
+    }
+
+    // --- 以下、将来的に必要になるメソッド（現状は空でもOK） ---
+
+    public function show(Book $book)
+    {
+        // 詳細画面が必要ならここに記述
     }
 }
