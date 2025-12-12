@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/**
-=======
->>>>>>> origin/rinon
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -10,13 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-<<<<<<< HEAD
-
-=======
     /**
      * Run the migrations.
      */
->>>>>>> origin/rinon
     public function up(): void
     {
         Schema::create('cache', function (Blueprint $table) {

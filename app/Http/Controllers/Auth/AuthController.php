@@ -46,10 +46,12 @@ class AuthController extends Controller
     }
 
     //登録内容確認用
+    //登録内容確認用
     public function confirmRegister(Request $request)
     {
         //バリデーションチェック
-        $request->validate([
+        // 【修正】 $inputs = を追加して、バリデーション済みのデータを受け取る
+        $inputs = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email'=> ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed'], //確認画面からハッシュ前のパスがくる

@@ -3,17 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-<<<<<<< HEAD
 use App\Models\Author;
 use App\Models\Book;
-=======
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
->>>>>>> origin/rinon
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-<<<<<<< HEAD
     public function run(): void
     {
         // 1. 管理者ユーザー (ログイン用: admin@example.com / password)
@@ -28,23 +23,9 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
 
         // 3. 著者10人 × 本3冊 (合計30冊)
+        // ランキング表示などに必要なデータです
         Author::factory(10)
             ->has(Book::factory()->count(3))
             ->create();
     }
 }
-=======
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
-    {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-    }
-}
->>>>>>> origin/rinon

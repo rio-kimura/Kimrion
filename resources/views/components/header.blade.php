@@ -6,6 +6,7 @@
         <a href="{{ route('login') }}">ログイン</a>
 		@endguest
 		@auth
+        <a href="{{ route('home') }}">ホーム</a>
 		<a href="{{ route('books.index') }}">検索</a>
 		<a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             ログアウト
